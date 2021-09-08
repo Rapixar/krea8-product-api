@@ -17,7 +17,7 @@ spec:
         - name: m2
           mountPath: /root/.m2
     - name: docker
-      image: docker:latest
+      image: docker:20.10.8
       command:
         - sleep
       args: 
@@ -28,7 +28,7 @@ spec:
         - name: dockersock
           mountPath: /var/run/docker.sock
     - name: helm
-      image: dtzar/helm-kubectl
+      image: dtzar/helm-kubectl:3.6.3
       command:
         - sleep
       args: 
