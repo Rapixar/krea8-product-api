@@ -28,7 +28,7 @@ spec:
         - name: dockersock
           mountPath: /var/run/docker.sock
     - name: helm
-      image: dtzar/helm-kubectl:3.6.3
+      image: lachlanevenson/k8s-helm:v3.6.0
       command:
         - sleep
       args: 
