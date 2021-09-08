@@ -23,7 +23,7 @@ spec:
         - name: dockersock
           mountPath: /var/run/docker.sock
     - name: helm
-      image: dtzar/helm-kubectl:v3.6.0
+      image: dtzar/helm-kubectl
       command:
         - cat
       tty: true
