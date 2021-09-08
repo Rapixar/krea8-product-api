@@ -9,7 +9,9 @@ spec:
     - name: golang
       image: golang:alpine
       command:
-        - cat
+        - sleep
+      args: 
+        - 99d
       tty: true
       volumeMounts:
         - name: m2
@@ -17,7 +19,9 @@ spec:
     - name: docker
       image: docker:latest
       command:
-        - cat
+        - sleep
+      args: 
+        - 99d
       tty: true
       privileged: true
       volumeMounts:
@@ -26,7 +30,9 @@ spec:
     - name: helm
       image: dtzar/helm-kubectl
       command:
-        - cat
+        - sleep
+      args: 
+        - 99d
       tty: true
   volumes:
     - name: dockersock
