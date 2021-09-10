@@ -16,14 +16,14 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
-            steps {
-                container('golang') {
-                    sh 'go get -d -v ./...'
-                    sh 'go build -o /go/bin/app -v ./...'
-                }
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         container('golang') {
+        //             sh 'go get -d -v ./...'
+        //             sh 'go build -o /go/bin/app -v ./...'
+        //         }
+        //     }
+        // }
         stage('Docker Build') {
             when {
                 environment name: 'DEPLOY', value: 'true'
