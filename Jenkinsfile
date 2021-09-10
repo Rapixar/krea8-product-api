@@ -3,7 +3,7 @@ pipeline {
         DEPLOY = "${env.BRANCH_NAME == "master" || env.BRANCH_NAME == "dev" ? "true" : "false"}"
         NAME = "${env.BRANCH_NAME == "master" ? "product-api" : "product-api-staging"}"
         BUILD_NUMBER = "${env.BUILD_NUMBER}"
-        VERSION = "${env.BRANCH_NAME == "master" ? "BUILD_NUMBER" : "STG_BUILD_NUMBER"}"
+        VERSION = "${env.BRANCH_NAME == "master" ? "BUILD_NUMBER" : "stg" + "-" + BUILD_NUMBER}"
         DOMAIN = 'localhost'
         REGISTRY = 'rapixar/krea8-product-api'
         REGISTRY_CREDENTIAL = 'dockerhub-rapixar'
