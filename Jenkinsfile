@@ -8,7 +8,7 @@ pipeline {
         REGISTRY = "${env.BRANCH_NAME == "main" ? 'rapixar/krea8-product-api' : "rapixar/stg-krea8-product-api"}"
         REGISTRY_CREDENTIAL = 'dockerhub-rapixar'
         NAMESPACE = "${env.BRANCH_NAME == "main" ? "krea8" : "stg-krea8"}"
-        HELM_FILE = "${env.BRANCH_NAME == "main" ? "values.yaml" : "values-staging.yaml"}"
+        HELM_FILE = "${env.BRANCH_NAME == "main" ? "values.yaml" : "stg-values.yaml"}"
     }
     agent {
         kubernetes {
