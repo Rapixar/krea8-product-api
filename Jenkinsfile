@@ -1,14 +1,14 @@
 pipeline {
     environment {
-        DEPLOY = "${env.BRANCH_NAME == "master" || env.BRANCH_NAME == "dev" ? "true" : "false"}"
-        NAME = "${env.BRANCH_NAME == "master" ? "product-api" : "product-api-staging"}"
+        DEPLOY = "${env.BRANCH_NAME == "main" || env.BRANCH_NAME == "dev" ? "true" : "false"}"
+        NAME = "${env.BRANCH_NAME == "main" ? "product-api" : "product-api-staging"}"
         BUILD_NUMBER = "${env.BUILD_NUMBER}"
-        VERSION = "${env.BRANCH_NAME == "master" ? "BUILD_NUMBER" : "stg" + "-" + BUILD_NUMBER}"
+        VERSION = "${env.BRANCH_NAME == "main" ? "BUILD_NUMBER" : "stg" + "-" + BUILD_NUMBER}"
         DOMAIN = 'localhost'
-        REGISTRY = "${env.BRANCH_NAME == "master" ? 'rapixar/krea8-product-api' : "rapixar/stg-krea8-product-api"}"
+        REGISTRY = "${env.BRANCH_NAME == "main" ? 'rapixar/krea8-product-api' : "rapixar/stg-krea8-product-api"}"
         REGISTRY_CREDENTIAL = 'dockerhub-rapixar'
-        NAMESPACE = "${env.BRANCH_NAME == "master" ? "krea8" : "stg-krea8"}"
-        HELM_FILE = "${env.BRANCH_NAME == "master" ? "values.yaml" : "values-staging.yaml"}"
+        NAMESPACE = "${env.BRANCH_NAME == "main" ? "krea8" : "stg-krea8"}"
+        HELM_FILE = "${env.BRANCH_NAME == "main" ? "values.yaml" : "values-staging.yaml"}"
     }
     agent {
         kubernetes {
