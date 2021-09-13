@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: rapixar/krea8-product-api
+  repository: rapixar/stg-krea8-product-api
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -47,7 +47,7 @@ ingress:
      kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: krea8.local
+    - host: stg-krea8.local
     #  path: /product
     # http:
       paths:
@@ -69,7 +69,6 @@ resources:
     memory: 128Mi
   requests:
     cpu: 100m
-    memory: 128Mi
 
 autoscaling:
   enabled: true

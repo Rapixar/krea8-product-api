@@ -5,9 +5,10 @@ pipeline {
         BUILD_NUMBER = "${env.BUILD_NUMBER}"
         VERSION = "${env.BRANCH_NAME == "master" ? "BUILD_NUMBER" : "stg" + "-" + BUILD_NUMBER}"
         DOMAIN = 'localhost'
-        REGISTRY = 'rapixar/krea8-product-api'
+        REGISTRY = "${env.BRANCH_NAME == "master" ? 'rapixar/krea8-product-api' : "rapixar/stg-krea8-product-api"}"
         REGISTRY_CREDENTIAL = 'dockerhub-rapixar'
-        NAMESPACE = 'krea8'
+        NAMESPACE = "${env.BRANCH_NAME == "master" ? "krea8" : "stg-krea8"}"
+        HELM_FILE = "${env.BRANCH_NAME == "master" ? "values.yaml" : "values-staging.yaml"}"
     }
     agent {
         kubernetes {
@@ -52,7 +53,7 @@ pipeline {
             }
             steps {
                 container('helm') {
-                    sh "helm upgrade --install --force --set name=${NAME} --set image.tag=${VERSION} --set domain=${DOMAIN} ${NAME} ./helm -n=${NAMESPACE}"
+                    sh "helm upgrade --install --force --set name=${NAME} --set image.tag=${VERSION} --set domain=${DOMAIN} ${NAME} -f ${HELM_FILE} ./helm -n=${NAMESPACE} --debug"
                 }
             }
         }
