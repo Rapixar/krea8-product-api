@@ -53,7 +53,7 @@ pipeline {
             }
             steps {
                 container('helm') {
-                    sh "helm upgrade --install --force --set name=${NAME} --set image.tag=${VERSION} --set domain=${DOMAIN} ${NAME} -f ${HELM_FILE} ./helm -n=${NAMESPACE} --debug"
+                    sh "helm upgrade --install --force --set name=${NAME} --set image.tag=${VERSION} --set domain=${DOMAIN} ${NAME} -f ./helm/${HELM_FILE} ./helm -n=${NAMESPACE} --debug"
                 }
             }
         }
